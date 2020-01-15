@@ -1,4 +1,3 @@
-" =============================================================================
 " # PLUGINS
 " =============================================================================
 "
@@ -14,12 +13,17 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 Plug 'caksoylar/vim-mysticaltutor'
 
+" Fuzzy finder
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf.vim'
+
 " Syntactic language support
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'plasticboy/vim-markdown'
-
+" for open policy agent
+Plug 'tsandall/vim-rego'
 call plug#end()
 
 
@@ -44,3 +48,24 @@ vnoremap L g_
 " # Settings
 " =============================================================================
 :set number
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+" File Find {{{
+
+set path+=**
+set wildmenu
+set wildignore+=**/node_modules/** 
+set hidden
+
+" }}}
+"
+ " =============================================================================
+ " # Golang Settings
+ " =============================================================================
+ let g:go_fmt_command = "goimports"
