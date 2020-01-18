@@ -17,6 +17,9 @@ Plug 'caksoylar/vim-mysticaltutor'
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf.vim'
 
+" Semantic language support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Syntactic language support
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
