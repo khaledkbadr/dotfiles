@@ -47,6 +47,9 @@ imap <C-@> <C-Space>
 noremap H ^
 noremap L $
 vnoremap L g_
+" map Enter and Shift+Enter to insert new lines without going to insert mod
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
 " =============================================================================
 " # Settings
 " =============================================================================
@@ -67,6 +70,7 @@ set wildignore+=**/node_modules/**
 set hidden
 
 " }}}
+set grepprg=rg\ --vimgrep\ $*
 "
  " =============================================================================
  " # Golang Settings
