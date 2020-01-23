@@ -11,8 +11,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
+" Themes
 Plug 'caksoylar/vim-mysticaltutor'
-
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf.vim'
@@ -61,6 +61,13 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+" In normal mode or in insert mode, press Alt-j to move the current line down, or press Alt-k to move the current line up. 
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " File Find {{{
 
@@ -68,11 +75,15 @@ set path+=**
 set wildmenu
 set wildignore+=**/node_modules/** 
 set hidden
-
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+nnoremap <c-p> :FZF<cr>
 " }}}
+
 set grepprg=rg\ --vimgrep\ $*
-"
- " =============================================================================
- " # Golang Settings
- " =============================================================================
- let g:go_fmt_command = "goimports"
+" =============================================================================
+" # Golang Settings
+" =============================================================================
+let g:go_fmt_command = "goimports"

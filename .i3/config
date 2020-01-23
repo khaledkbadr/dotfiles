@@ -420,5 +420,5 @@ mode "$mode_gaps_outer" {
 exec_always ~/.screenlayout/dual.sh
 bindsym $mod+x move workspace to output left
 # shutdown screen after 60 seconds
-exec_always xset dpms 60
+exec_always xset dpms 300
 bindsym $mod+Shift+x exec i3lock & sleep 5 && xset dpms force off
