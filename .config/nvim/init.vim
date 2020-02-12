@@ -11,8 +11,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
+Plug 'preservim/nerdtree'
+
 " Themes
 Plug 'caksoylar/vim-mysticaltutor'
+Plug 'morhetz/gruvbox'
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf.vim'
@@ -27,13 +30,17 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'plasticboy/vim-markdown'
 " for open policy agent
 Plug 'tsandall/vim-rego'
+" vim anti-patterns
+Plug 'takac/vim-hardtime'
 call plug#end()
 
 
  " =============================================================================
 " # Colors
 " =============================================================================
-colorscheme mysticaltutor
+" colorscheme mysticaltutor
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 " Mapping
 " Ctrl-Space for completions. Heck Yeah!
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -68,6 +75,11 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+" map moving between tiles
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " File Find {{{
 
@@ -83,7 +95,13 @@ nnoremap <c-p> :FZF<cr>
 " }}}
 
 set grepprg=rg\ --vimgrep\ $*
+" Sane splits
+set splitright
+set splitbelow
 " =============================================================================
 " # Golang Settings
 " =============================================================================
+let g:go_doc_popup_window = 1
 let g:go_fmt_command = "goimports"
+" vim anti-patterns
+let g:hardtime_default_on = 1
