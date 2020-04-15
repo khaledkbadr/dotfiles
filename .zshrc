@@ -103,12 +103,6 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/khaled/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/khaled/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/khaled/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/khaled/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-fpath=($fpath "/home/khaled/.zfunctions")
 # noefetch
 neofetch
 # fzf uses ripgrep & fd
@@ -116,7 +110,32 @@ export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_mod
 export FZF_CTRL_T_COMMAND="rg --files --no-ignore-vcs --glob '!*/{.git,node_modules}/**'"
 export FZF_ALT_C_COMMAND="fd --type d --no-ignore-vcs --exclude node_modules --exclude .git"
 export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=/home/khaled/go
 export GOPRIVATE="github.com/MagalixTechnologies"
 alias vim=nvim
+###################################### Linux ###########################################
+alias code="code --disable-gpu"
+###################################### Magalix ###########################################
 alias magalix="cd ~/code/github.com/MagalixTechnologies"
 alias playground="cd ~/code/playground"
+alias opalogs="kubectl logs -f deploy/opa-advisor -c opa-advisor --namespace cluster-advisor"
+alias advisorlogs="kubectl logs -f deploy/advisor-service -c advisor-service --namespace cluster-advisor"
+alias batcherlogs="kubectl logs -f deploy/cluster-advisor-batcher -c cluster-advisor-batcher --namespace cluster-advisor"
+alias apigwlogs="kubectl logs -f deploy/api-gateway -c api-gateway-glb --namespace magalix-api-gateway-glb"
+alias recommendationslogs="kubectl logs -f deploy/recommendations-service -c recommendations-service --namespace cluster-advisor"
+alias entitieslogs="kubectl logs -f deploy/entities-definitions -c entities-definitions  --namespace entities"
+alias kafkacli="/home/khaled/Downloads/kafka_2.11-2.4.1/bin/kafka-console-consumer.sh --bootstrap-server  kafka.kafka.svc:9092  --from-beginning --topic "
+alias kprod="gcloud container clusters get-credentials rgn-prod --zone us-central1-a --project prod-env-203121"
+alias kdev="gcloud container clusters get-credentials dev --zone us-east1-b --project dev-env-203117"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/khaled/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/khaled/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/khaled/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/khaled/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+
+
+
+fpath=($fpath "/home/khaled/.zfunctions")
+

@@ -11,13 +11,16 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
-Plug 'preservim/nerdtree'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
 
 " Themes
 Plug 'caksoylar/vim-mysticaltutor'
 Plug 'morhetz/gruvbox'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " Semantic language support
@@ -27,6 +30,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'davidhalter/jedi-vim'
 Plug 'plasticboy/vim-markdown'
 " for open policy agent
 Plug 'tsandall/vim-rego'
@@ -40,7 +44,7 @@ call plug#end()
 " =============================================================================
 " colorscheme mysticaltutor
 let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+colorscheme onehalfdark
 " Mapping
 " Ctrl-Space for completions. Heck Yeah!
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -81,6 +85,19 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+
+" map tab navigations
+map <C-t><up> :tabr<cr>
+
+map <C-t><down> :tabl<cr>
+
+map <C-t><left> :tabp<cr>
+
+map <C-t><right> :tabn<cr> 
+
+" nerdtree toggle
+map <C-n> :Ranger<CR>
+
 " File Find {{{
 
 set path+=**
@@ -103,5 +120,7 @@ set splitbelow
 " =============================================================================
 let g:go_doc_popup_window = 1
 let g:go_fmt_command = "goimports"
+let g:go_rename_command = "gopls"
 " vim anti-patterns
 let g:hardtime_default_on = 1
+

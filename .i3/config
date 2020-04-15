@@ -27,7 +27,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -87,7 +87,7 @@ bindsym $mod+Right focus right
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
@@ -351,7 +351,7 @@ bar {
 }
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+bindsym $mod+m exec "bash /home/khaled/code/github.com/khaledkbadr/dotfiles/scripts/toggle-bose.sh"
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
@@ -420,8 +420,10 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-exec_always ~/.screenlayout/dual.sh
+exec_always ~/.screenlayout/laptop-only.sh
 bindsym $mod+x move workspace to output left
 # shutdown screen after 60 seconds
 exec_always xset dpms 300
 bindsym $mod+Shift+x exec i3lock & sleep 5 && xset dpms force off
+
+bindsym $mod+grave exec "xrandr --output eDP1 --off --output DP1 --off --output DP2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off"
