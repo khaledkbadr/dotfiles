@@ -1,6 +1,4 @@
-" # PLUGINS
-" =============================================================================
-"
+
 " Load vim-plug
 call plug#begin()
 
@@ -18,6 +16,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'caksoylar/vim-mysticaltutor'
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'NLKNguyen/papercolor-theme'
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
@@ -32,6 +31,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'davidhalter/jedi-vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'nicwest/vim-http'
 " for open policy agent
 Plug 'tsandall/vim-rego'
 " vim anti-patterns
@@ -42,9 +42,10 @@ call plug#end()
  " =============================================================================
 " # Colors
 " =============================================================================
-" colorscheme mysticaltutor
+ colorscheme mysticaltutor
 let g:gruvbox_contrast_dark = 'hard'
-colorscheme onehalfdark
+" colorscheme gruvbox
+" colorscheme onehalfdark
 " Mapping
 " Ctrl-Space for completions. Heck Yeah!
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
@@ -71,7 +72,10 @@ set tabstop=4
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
-set expandtab
+" reload buffer
+"set expandtab
+"set autoread
+"au FocusGained * :checktime
 " In normal mode or in insert mode, press Alt-j to move the current line down, or press Alt-k to move the current line up. 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -84,6 +88,13 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+" vim-go maps
+" let g:go_def_reuse_buffer=1
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 
 " map tab navigations
@@ -105,6 +116,7 @@ set wildmenu
 set wildignore+=**/node_modules/** 
 set hidden
 let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
       \ }
@@ -119,6 +131,7 @@ set splitbelow
 " # Golang Settings
 " =============================================================================
 let g:go_doc_popup_window = 1
+let g:go_doc_keywordprg_enabled = 1
 let g:go_fmt_command = "goimports"
 let g:go_rename_command = "gopls"
 " vim anti-patterns

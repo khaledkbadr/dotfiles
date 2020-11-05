@@ -112,6 +112,7 @@ export FZF_ALT_C_COMMAND="fd --type d --no-ignore-vcs --exclude node_modules --e
 export PATH=$PATH:$(go env GOPATH)/bin
 export GOPATH=/home/khaled/go
 export GOPRIVATE="github.com/MagalixTechnologies"
+export GO111Module="auto"
 alias vim=nvim
 ###################################### Linux ###########################################
 alias code="code --disable-gpu"
@@ -127,6 +128,7 @@ alias entitieslogs="kubectl logs -f deploy/entities-definitions -c entities-defi
 alias kafkacli="/home/khaled/Downloads/kafka_2.11-2.4.1/bin/kafka-console-consumer.sh --bootstrap-server  kafka.kafka.svc:9092  --from-beginning --topic "
 alias kprod="gcloud container clusters get-credentials rgn-prod --zone us-central1-a --project prod-env-203121"
 alias kdev="gcloud container clusters get-credentials dev --zone us-east1-b --project dev-env-203117"
+alias cad="cadence --address cad-cadence-frontend.khaled-cadence.svc:7933"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/khaled/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/khaled/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
